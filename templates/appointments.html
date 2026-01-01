@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h2>Scheduled Appointments</h2>
+    
+    {% if appointments %}
+    <ul class="appointment-list">
+        {% for apt in appointments %}
+        <li class="appointment-item">
+            <div class="appointment-details">
+                <h3>{{ apt.name }} - {{ apt.service }}</h3>
+                <p>Date: {{ apt.date }} at {{ apt.time }}</p>
+                <p>Phone: {{ apt.phone }}</p>
+                <p>Booking ID: {{ apt.id }}</p>
+            </div>
+            <div class="appointment-actions">
+                <a href="{{ url_for('cancel_appointment', appointment_id=apt.id) }}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No appointments scheduled yet.</p>
+    {% endif %}
+    
+    <a href="{{ url_for('book') }}" class="btn">Book New Appointment</a>
+</div>
+{% endblock %}

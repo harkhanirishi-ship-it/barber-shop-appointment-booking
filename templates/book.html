@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h2>Book Your Appointment</h2>
+    
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+    
+    <form method="post">
+        <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" name="phone" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="service">Service</label>
+            <select id="service" name="service" required>
+                <option value="">Select a service</option>
+                <option value="Haircut">Haircut - $25</option>
+                <option value="Beard Trim">Beard Trim - $15</option>
+                <option value="Haircut and Beard">Haircut + Beard - $35</option>
+                <option value="Hot Towel Shave">Hot Towel Shave - $30</option>
+                <option value="Hair Color">Hair Color - $45</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date" required min="{{ now }}">
+        </div>
+        
+       <div class="form-group">
+            <label for="time">Time</label>
+            <select id="time" name="time" required>
+                <option value="">Select date first</option>
+             </select>
+        </div>
+
+
+        
+        <button type="submit" class="btn">Book Appointment</button>
+        <a href="{{ url_for('home') }}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+<script>
+const dateInput = document.getElementById('date');
+const timeSelect = document.getElementById('time');
+
+dateInput.addEventListener('change', () => {
+    const date = dateInput.value;
+    timeSelect.innerHTML = '<option>Loading slots...</option>';
+
+    fetch(`/slot-status?date=${date}`)
+        .then(res => res.json())
+        .then(slots => {
+            timeSelect.innerHTML = '';
+
+            slots.forEach(slot => {
+                const opt = document.createElement('option');
+                opt.value = slot.time;
+                opt.textContent =
+                    slot.time + (slot.status === "booked" ? " (Booked)" : " (Available)");
+
+                if (slot.status === "booked") {
+                    opt.disabled = true;
+                }
+
+                timeSelect.appendChild(opt);
+            });
+        });
+});
+</script>
+
+{% endblock %}

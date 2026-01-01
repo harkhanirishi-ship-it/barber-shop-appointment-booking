@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card" style="text-align: center;">
+    <h2>Appointment Confirmed!</h2>
+    <p>Thank you for booking with Raj Barber Shop.</p>
+    
+    <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px 0;">
+        <h3>Appointment Details</h3>
+        <p><strong>Name:</strong> {{ appointment.name }}</p>
+        <p><strong>Service:</strong> {{ appointment.service }}</p>
+        <p><strong>Date:</strong> {{ appointment.date }}</p>
+        <p><strong>Time:</strong> {{ appointment.time }}</p>
+        <p><strong>Phone:</strong> {{ appointment.phone }}</p>
+        <p><strong>Booking ID:</strong> {{ appointment.id }}</p>
+    </div>
+    
+    <p>We'll see you soon! Please arrive 5 minutes before your appointment time.</p>
+    
+    <a href="{{ url_for('home') }}" class="btn">Return to Home</a>
+    <a href="{{ url_for('appointments_view') }}" class="btn btn-secondary">View All Appointments</a>
+</div>
+{% endblock %}

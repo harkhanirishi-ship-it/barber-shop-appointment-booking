@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rishi Barber Shop - Premium Grooming Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            color: #1f2933;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: #064e3b;
+            color: #ffffff;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo span {
+            color: #22c55e;
+        }
+        
+        nav {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        nav a {
+            color: #22c55e;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background: #064e3b;
+            color: #ffffff;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 20px;
+            color:#064e3b;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #16a34a;
+            color: #ffffff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background:  #15803d;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(34, 230, 109, 0.4);
+        }
+        
+        .btn-secondary {
+            background: #6b7280;
+        }
+        
+        .btn-secondary:hover {
+            background:  #4b5563;
+            box-shadow: 0 5px 15px rgba(149, 165, 166, 0.4);
+        }
+        
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .error {
+            color: #4b5563;
+            margin-top: 5px;
+        }
+        
+        .appointment-list {
+            list-style: none;
+        }
+        
+        .appointment-item {
+            background:#f0fdf4;
+            border-left: 4px solid #16a34a;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .appointment-details {
+            flex: 1;
+        }
+        
+        .appointment-actions {
+            margin-left: 15px;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(rgba(44, 80, 77, 0.8), rgba(44, 80, 77, 0.8)), url('https://images.unsplash.com/photo-1503951914875-452162b0f3d1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+        
+        .service {
+            text-align: center;
+            width: 200px;
+            margin: 15px;
+        }
+        
+        .service i {
+            font-size: 2.5rem;
+            color:#16a34a;
+            margin-bottom: 15px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color:#4b5563;
+            border-top: 1px solid #d1d5db;
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Rishi <span>Barber</span> Shop</div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('book') }}">Book Appointment</a>
+            <a href="{{ url_for('customer_login') }}">Customer Login</a>
+            <a href="{{ url_for('register') }}">Customer Register</a>
+            <a href="{{ url_for('appointments_view') }}">View Appointments</a>
+            {% if session.get('logged_in') %}
+               <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+               <a href="{{ url_for('login') }}">Admin Login</a>
+            {% endif %}
+        </nav>
+        
+        {% block content %}{% endblock %}
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Rishi Barber Shop. All rights reserved.</p>
+            <p>123 Main Street, Cityville | Phone: (555) 123-4567 | Email: info@rishibarbershop.com</p>
+        </div>
+    </footer>
+</body>
+</html>

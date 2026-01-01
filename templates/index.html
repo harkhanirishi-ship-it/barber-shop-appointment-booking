@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero">
+    <h1>Premium Barber Experience</h1>
+    <p>Traditional grooming with modern style</p>
+    <a href="{{ url_for('book') }}" class="btn">Book Now</a>
+</div>
+
+<div class="card">
+    <h2>Welcome to Raj Barber Shop</h2>
+    <p>Established in 2005, Raj Barber Shop has been providing premium grooming services for men. Our skilled barbers are trained in both classic and contemporary techniques to give you the perfect look.</p>
+    
+    <div class="services">
+        <div class="service">
+            <i>✂️</i>
+            <h3>Haircut</h3>
+            <p>From classic to modern styles</p>
+        </div>
+        <div class="service">
+            <i>🧔</i>
+            <h3>Beard Trim</h3>
+            <p>Precision shaping and styling</p>
+        </div>
+        <div class="service">
+            <i>🧖</i>
+            <h3>Hot Towel Shave</h3>
+            <p>Traditional luxury experience</p>
+        </div>
+        <div class="service">
+            <i>💈</i>
+            <h3>Hair Color</h3>
+            <p>Professional coloring services</p>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <h2>Business Hours</h2>
+    <p>Monday - Friday: 9:00 AM - 7:00 PM</p>
+    <p>Saturday: 10:00 AM - 5:00 PM</p>
+    <p>Sunday: Closed</p>
+</div>
+{% endblock %}

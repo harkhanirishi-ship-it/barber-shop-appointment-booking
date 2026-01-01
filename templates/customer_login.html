@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+<h2>Customer Login</h2>
+
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
+
+<p>New customer? <a href="{{ url_for('register') }}">Register here</a></p>
+
+<form method="POST">
+<input name="email" type="email" placeholder="Email" required>
+<input name="password" type="password" placeholder="Password" required>
+<button class="btn">Login</button>
+</form>
+</div>
+{% endblock %}

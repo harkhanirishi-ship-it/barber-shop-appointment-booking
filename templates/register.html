@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+<h2>Customer Registration</h2>
+
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
+
+<form method="POST">
+<input name="name" placeholder="Full Name" required>
+<input name="email" type="email" placeholder="Email" required>
+<input name="password" type="password" placeholder="Password" required>
+<input name="phone" placeholder="Phone" required>
+<button class="btn">Register</button>
+</form>
+</div>
+{% endblock %}
